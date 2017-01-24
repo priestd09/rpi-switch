@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>WebIOPi | MyDoors</title>
+        <script type="text/javascript" src="/webiopi.js"></script>
+        <script type="text/javascript">
+        webiopi().ready(function() {
+                // Create a "MyDoors" labeled button for GPIO 2
+		var w = webiopi();
+		w.setFunction(2,"OUT");
+
+		var button2 = w.createButton("gpio2","MyDoors",function(event) {
+//			w.toggleValue(2);
+			w.digitalWrite(2, 1)
+			window.setTimeout(function(event) {
+				w.digitalWrite(2, 0)
+      }, 3000);   // toggles button off after 3 seconds 
+
+		});
+
+                // Append button to HTML element with ID="controls" using jQuery
+                $("#controls").append(button2);
+
+
+                // Refresh GPIO buttons
+                // pass true to refresh repeatedly of false to refresh once
+                webiopi().refreshGPIO(true);
+
+        });
+
+        </script>
+        <style type="text/css">
+                button {
+                        display: block;
+                        margin: 5px 5px 5px 5px;
+                        width: 260px;
+                        height: 145px;
+                        font-size: 48pt;
+                        font-weight: bold;
+                        color: white;
+                }
+
+                #gpio17.LOW {
+                        background-color: Black;
+                }
+
+                #gpio17.HIGH {
+                        background-color: Blue;
+                }
+        </style>
+</head>
+<body>
+<br/><br/>
+        <div id="controls" align="center"></div>
+</body>
+</html>
