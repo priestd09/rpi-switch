@@ -18,7 +18,7 @@ This is a small app running on Raspberry Pi as s remote switch for garage doors.
 * Copy index.html to `/home/pi/WebIOPi-0.7.0/mydoors` and customize IO pin number where is relay connected
 * If relay pin connected to an another pin, udpate index.html to right pin number
 
-# security
+# Security
 * the RPI is conneted to homes Wifi that is considered secure
 * if additional security is required, customize RPIs web server to introduce aditional authentication
 * cusotmize RPIs transport protocol to use SSL/https to make secure trasfer if possible
